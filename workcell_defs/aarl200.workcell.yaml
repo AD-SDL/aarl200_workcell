@@ -1,0 +1,50 @@
+name: Example_Workcell
+
+# Configuration info and parameters for the workcell and WEI
+# All of these values can be overridden via CLI arguments
+config:
+  # This is the name of the container running the WEI server,
+  # or the hostname/IP of the machine running the WEI server if not using Docker (or addressing from another machine)
+  server_host: aarl200_server
+  server_port: 8000
+  redis_host: aarl200_redis
+  redis_port: 6379
+  reset_locations: false
+  update_interval: 1.0
+  use_diaspora: false
+  log_level: 20 # INFO level, see https://docs.python.org/3/library/logging.html#levels for a list of levels
+  autostart_engine: true
+
+#List of all components accessible in this workcell
+modules:
+  - name: ur_aarl200
+    model: UR-5e
+    interface: wei_rest_node
+    config:
+      rest_node_address: "http://ur_module:3011"
+  - name: vention_rail_aarl200
+    model: Vention Machine Motion2 - Rack & Pinion v2 w/ Gearbox
+    interface: wei_rest_node
+    config:
+      rest_node_address: "http://vention_rail_module:3022"
+
+locations:
+  ur_aarl200:
+    ur_aarl200.travel_safe_joints: [0.00044058868661522865, -2.810916086236471, 1.744305435811178, 1.0652529436298828, 1.5159751176834106, -0.011863533650533498]
+    ur_aarl200.supply_station_safe_joints: [0.019657766446471214, -1.8048960171141566, 2.3868096510516565, -0.4845213455012818, 0.031074078753590584, -0.06278688112367803]
+    ur_aarl200.big_kahuna_safe_joints: [-0.7218335310565394, -2.0373341045775355, 2.3628197352038782, -0.3074844640544434, 0.8770073652267456, 0.01976330578327179]
+    # Door
+    ur_aarl200.door_closed_safe_joints: [-0.7517765204059046, -1.4747630891254921, 2.0448783079730433, -0.6312745970538636, 0.7814533710479736, -0.012398544942037404]
+    ur_aarl200.door_open_safe_joints: [0.10984423756599426, -1.5013274562409897, 2.0448554197894495, -0.5460192722133179, 1.6713240146636963, -0.007747952138082326]
+    ur_aarl200.door_closed_outside: [-0.503824131769392, 0.1806333921154839, 0.2866770149957223, 1.2161833436957843, -1.1587984384523005, -1.1955177345384564]
+    ur_aarl200.door_closed_inside: [-0.49771658807125047, 0.127735046464038, 0.28664743408696414, 1.2120171252269238, -1.1656893950224958, -1.202432189858224]
+    ur_aarl200.door_open_outside: [-0.4976830060645428, -0.24324329851484036, 0.28661358639320983, 1.2119725728142101, -1.1658376306190095, -1.2024126213717323]
+    ur_aarl200.door_open_inside: [-0.5022492554719352, -0.15646734508641819, 0.28659924561633215, 1.212057513309077, -1.1657906751765579, -1.2024354867456504]
+    # ICP Supply Racks
+    ur_aarl200.supply_rack_icp1: [-0.36714574585791154, -0.4225615710624488, -0.030845961016028243, 1.5875250742675884, 0.01123785278801108, 0.005299888072817962]
+    ur_aarl200.big_kahuna_supply_rack_icp: [-0.5288696786070626, 0.0644033129946875, -0.03139179715640672, 1.2070894087154345, -1.2234740608393337, -1.2037801049693881]
+    # ur_aarl200.supply_rack_icp1: [-0.36714574585791154, -0.4255615710624488, -0.030845961016028243, 1.5875250742675884, 0.01123785278801108, 0.005299888072817962]
+  vention_rail_aarl200:
+    vention_rail_aarl200.door_rail: 50
+    vention_rail_aarl200.supply_table: 150
+    
