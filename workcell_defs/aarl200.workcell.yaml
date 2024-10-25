@@ -5,7 +5,7 @@ name: Example_Workcell
 config:
   # This is the name of the container running the WEI server,
   # or the hostname/IP of the machine running the WEI server if not using Docker (or addressing from another machine)
-  server_host: aarl200_server
+  server_host: 0.0.0.0
   server_port: 8000
   redis_host: aarl200_redis
   redis_port: 6379
@@ -27,6 +27,16 @@ modules:
     interface: wei_rest_node
     config:
       rest_node_address: "http://vention_rail_module:3022"
+  - name: big_kahuna
+    model: big_kahuna
+    interface: wei_rest_node
+    config:
+      rest_node_address: "http://146.139.45.3:2000"
+  - name: pal
+    model: pal
+    interface: wei_rest_node
+    config:
+      rest_node_address: "http://146.139.45.3:2001"
 
 locations:
   ur_aarl200:

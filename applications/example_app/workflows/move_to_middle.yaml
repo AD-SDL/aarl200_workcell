@@ -1,0 +1,76 @@
+name: Move_To_Middle
+metadata:
+  author: Tobias Ginsburg, Kyle Hippe, Ryan D. Lewis
+  info: Example workflow for WEI
+  version: 0.2
+
+flowdef:
+ 
+  - name: Move Rail to Out Position
+    module: vention_rail_aarl200
+    action: move
+    args:
+      position: 550
+      speed: 80
+      acceleration: 40
+  - name: Open Gripper
+    module: ur_aarl200
+    action: toggle_gripper
+    args:
+      open: true
+  - name: dance UR
+    module: ur_aarl200
+    action: movej
+    args:
+      joints: [0, -1.57, 0, 0, 0, 0]
+      a: 0.7
+      v: 0.7
+  - name: dance UR
+    module: ur_aarl200
+    action: movej
+    args:
+      joints: [0, -1.57, 0, 0, 0.785, 0]
+      a: 1.0
+      v: 1.0
+  - name: dance UR
+    module: ur_aarl200
+    action: movej
+    args:
+      joints: [0, -1.57, 0, 0, -0.785, 0]
+      a: 1.0
+      v: 1.0
+  - name: dance UR
+    module: ur_aarl200
+    action: movej
+    args:
+      joints: [0, -1.57, 0, 0, 0.785, 0]
+      a: 1.0
+      v: 1.0
+  - name: dance UR
+    module: ur_aarl200
+    action: movej
+    args:
+      joints: [0, -1.57, 0, 0, -0.785, 0]
+      a: 1.0
+      v: 1.0
+  - name: dance UR
+    module: ur_aarl200
+    action: movej
+    args:
+      joints: [0, -1.57, 0, 0, 1.57, 0]
+      a: 1.0
+      v: 1.0
+  - name: Home UR
+    module: ur_aarl200
+    action: movej
+    args:
+      joints: ur_aarl200.travel_safe_joints
+      a: 0.7
+      v: 0.7
+  - name: Home Rail
+    module: vention_rail_aarl200
+    action: move
+    args:
+      position: 0
+      speed: 80
+      acceleration: 40
