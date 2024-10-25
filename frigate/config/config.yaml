@@ -1,0 +1,136 @@
+mqtt:
+  enabled: false
+
+ffmpeg:
+  global_args: 
+    - -an
+
+detect:
+  enabled: False
+
+go2rtc:
+  streams:
+    aarlcam1_stream:
+      - rtsp://146.139.45.24:7447/fL52qoIqICBplzg7
+    # aarlcam1:
+    #   - ffmpeg:aarlcam1_stream
+
+    aarlcam3_stream:
+      - rtsp://146.139.45.24:7447/rCYtwqfLHrpGGOyJ
+    # aarlcam3:
+    #   - ffmpeg:aarlcam3_stream#video=h264#rotate=180
+    
+    aarlcam5_stream:
+      - rtsp://146.139.45.24:7447/exuuI69ZTwxqlr7M#timeout=30
+    # aarlcam5:
+    #   - ffmpeg:aarlcam5_stream
+    
+    aarlcam6_stream:
+      - rtsp://146.139.45.24:7447/zICS9E9o9BTxRIdv#timeout=30
+    # aarlcam6:
+    #   - ffmpeg:aarlcam6_stream
+
+    aarlcam7_stream:
+      - rtsp://146.139.45.24:7447/BZBB3VrVmGFRNaqs#timeout=30
+    # aarlcam7:
+    #   - ffmpeg:aarlcam7_stream
+
+    aarlcam8_stream:
+      - rtsp://146.139.45.24:7447/TpJZ4EMm6aqpJUy0#timeout=30
+    # aarlcam8:
+    #   - ffmpeg:aarlcam8_stream
+
+    aarlcam9_stream:
+      - rtsp://146.139.45.24:7447/BGGwXG4M3rtrYwJy#timeout=30
+    # aarlcam9:
+    #   - ffmpeg:aarlcam9_stream
+
+    aarlcam10_stream:
+      - rtsp://146.139.45.24:7447/sSuqGPtD6V36rJs2#timeout=30
+    # aarlcam10:
+    #   - ffmpeg:aarlcam10_stream
+
+    aarlcam11_stream:
+      - rtsp://146.139.45.24:7447/AQjTFaDp66l0DLDg#timeout=30
+    # aarlcam11:
+    #   - ffmpeg:aarlcam11_stream
+
+    aarlcam12_stream:
+      - rtsp://146.139.45.24:7447/YizBhA8hahYhRUB3#timeout=30
+    # aarlcam12:
+    #   - ffmpeg:aarlcam12_stream
+
+birdseye:
+  enabled: true
+  mode: continuous
+
+cameras:
+  aarlcam1:
+    ffmpeg:
+      # hwaccel_args: preset-nvidia-h264
+      inputs:
+        - path: rtsp://localhost:8554/aarlcam1_stream
+          roles: []
+
+  aarlcam3:
+    ffmpeg:
+      # hwaccel_args: preset-nvidia-h264
+      inputs:
+        - path: rtsp://localhost:8554/aarlcam3_stream
+          roles: []
+
+  aarlcam5:
+    ffmpeg:
+      # hwaccel_args: preset-nvidia-h264
+      inputs:
+        - path: rtsp://localhost:8554/aarlcam5_stream
+          roles: []
+  aarlcam6:
+    ffmpeg:
+      # hwaccel_args: preset-nvidia-h264
+      inputs:
+        - path: rtsp://localhost:8554/aarlcam6_stream
+          roles: []
+  aarlcam7:
+    ffmpeg:
+      # hwaccel_args: preset-nvidia-h264
+      inputs:
+        - path: rtsp://localhost:8554/aarlcam7_stream
+          roles: []
+  aarlcam8:
+    ffmpeg:
+      # hwaccel_args: preset-nvidia-h264
+      inputs:
+        - path: rtsp://localhost:8554/aarlcam8_stream
+          roles: []
+  aarlcam9:
+    ffmpeg:
+      # hwaccel_args: preset-nvidia-h264
+      inputs:
+        - path: rtsp://localhost:8554/aarlcam9_stream
+          roles: []
+  aarlcam10:
+    ffmpeg:
+      # hwaccel_args: preset-nvidia-h264
+      inputs:
+        - path: rtsp://localhost:8554/aarlcam10_stream
+          roles: []
+  aarlcam11:
+    ffmpeg:
+      # hwaccel_args: preset-nvidia-h264
+      inputs:
+        - path: rtsp://localhost:8554/aarlcam11_stream
+          roles: []
+  aarlcam12:
+    ffmpeg:
+      # hwaccel_args: preset-nvidia-h264
+      inputs:
+        - path: rtsp://localhost:8554/aarlcam12_stream
+          roles: []
+version: 0.14
+camera_groups:
+  Birdseye:
+    order: 1
+    icon: LuActivity
+    cameras: birdseye
+
