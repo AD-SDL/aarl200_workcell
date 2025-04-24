@@ -25,13 +25,19 @@ def main() -> None:
     trash_ur_locations = ["ur_aarl200.trash_rack_icp1", "ur_aarl200.trash_rack_icp2", "ur_aarl200.trash_rack_icp3"]
     trash_rail_locations = [282, 318, 353]
     wf_dir = (Path(__file__).parent.parent / "workflows").resolve()
-
+    protocl_dir = (__file__).parent.parent / "workflows").resolve()
 
     wf_run = exp.start_run(
+            workflow=wf_dir / "bk_setup.workflow.yaml", payload ={"verbose": False}
+        )
+    return
+    wf_run = exp.start
+    run(
             workflow=wf_dir / "home_rail.workflow.yaml",
         )
-    while True:
         for i in range(3):
+
+            #transfer to PAL
             wf_run = exp.start_run(
                 workflow=wf_dir / "pick_tube_rack.workflow.yaml",
                 payload={
@@ -51,16 +57,40 @@ def main() -> None:
                     "arm_safe_joints": "ur_aarl200.pal_safe_joints",
                 }
             )
+        #ADD RUN PAL WORKFLOW
             wf_run = exp.start_run(
                 workflow=wf_dir / "pick_tube_rack.workflow.yaml",
                 payload={
                     "travel_safe_joints": "ur_aarl200.travel_container_joints",
-                    "rail_position": 650,
-                    "arm_position": "ur_aarl200.pal_robot_1",
-                    "arm_safe_joints": "ur_aarl200.pal_safe_joints",
+                     "rail_position": 650,
+                     "arm_position": "ur_aarl200.pal_robot_1,
+                     "arm_safe_joints": "ur_aarl200.pal_safe_joints"
                 }
             )
+        # 
+            wf_run = exp.start_run(
+                workflow=wf_dir / "place_tube_rack.workflow.yaml",
+                payload={
+                    "travel_safe_joints": "ur_aarl200.travel_container_joints",
+                     "rail_position": pickup_rail_locations[i],
+                     "arm_position": pickup_ur_locations[i],
+                     "arm_safe_joints": "ur_aarl200.supply_station_safe_joints"
+                }
+            )
+        #ADD STARTUP ICP WORKFLOW
+        for i in range(3):
 
+            #transfer to ICP
+            wf_run = exp.start_run(
+                workflow=wf_dir / "pick_tube_rack.workflow.yaml",
+                payload={
+                    "travel_safe_joints": "ur_aarl200.travel_container_joints",
+                     "rail_position": pickup_rail_locations[i],
+                     "arm_position": pickup_ur_locations[i],
+                     "arm_safe_joints": "ur_aarl200.supply_station_safe_joints"
+                }
+            )
+        # 
             wf_run = exp.start_run(
                 workflow=wf_dir / "place_tube_rack.workflow.yaml",
                 payload={
@@ -70,7 +100,7 @@ def main() -> None:
                     "arm_safe_joints": "ur_aarl200.icp_safe_joints"
                 }
             )
-
+        #ADD RUN ICP WORKFLOW
             wf_run = exp.start_run(
                 workflow=wf_dir / "pick_tube_rack.workflow.yaml",
                 payload={
@@ -80,18 +110,16 @@ def main() -> None:
                     "arm_safe_joints": "ur_aarl200.icp_safe_joints"
                 }
             )
-
             wf_run = exp.start_run(
                 workflow=wf_dir / "place_tube_rack.workflow.yaml",
                 payload={
                     "travel_safe_joints": "ur_aarl200.travel_container_joints",
-                    "rail_position": trash_rail_locations[i],
-                    "arm_position": trash_ur_locations[i],
-                    "arm_safe_joints": "ur_aarl200.supply_station_safe_joints"
+                     "rail_position": pickup_rail_locations[i],
+                     "arm_position": pickup_ur_locations[i],
+                     "arm_safe_joints": "ur_aarl200.supply_station_safe_joints"
                 }
             )
-        break
-
+        
 
 if __name__ == "__main__":
     main()

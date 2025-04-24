@@ -1,0 +1,31 @@
+name: OpenLS test
+metadata:
+  author: Tobias Ginsburg, Kyle Hippe, Ryan D. Lewis
+  info: Example workflow for WEI
+  version: 0.2
+
+flowdef:
+  - name: LS blank
+    module: big_kahuna
+    action: run_experiment_using_python_protocol
+    args:
+      protocol_args: payload.blank_args
+      rename_container: False
+    files:
+      protocol: "../protocols/ls_blank.py"
+    data_labels:
+      containers: prep_containers
+      raw_log: blank_log
+      ID: blank_ID
+  - name: LS fill
+    module: big_kahuna
+    action: run_experiment_using_python_protocol
+    args:
+      protocol_args: payload.fill_args
+      rename_container: False
+    files:
+      protocol: "../protocols/ls_fill.py"
+    data_labels:
+      containers: fill_containers
+      raw_log: fill_log
+      ID: fill_ID

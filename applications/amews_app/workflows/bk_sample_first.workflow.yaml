@@ -1,0 +1,16 @@
+name: LS Sample
+metadata:
+  author: Tobias Ginsburg, Kyle Hippe, Ryan D. Lewis
+  info: Example workflow for WEI
+  version: 0.2
+
+flowdef:
+  - name: LS Sample
+    module: big_kahuna
+    action: run_experiment_using_python_protocol
+    args:
+     protocol_args: payload.protocol_args
+     rename_container: False
+    files:
+      protocol: "../protocols/ls_sample.py"
+  
