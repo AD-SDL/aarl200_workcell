@@ -1,0 +1,315 @@
+node_name: icp_aarl200
+node_id: 01JSQ7GY5GMGV5YF83QRM264V3
+node_url: null
+node_description: ICP instrument for aarl200
+node_type: device
+module_name: pe_icp_module
+module_version: 0.0.1
+capabilities:
+  get_info: true
+  get_state: true
+  get_status: true
+  send_action: true
+  get_action_result: true
+  get_action_history: true
+  action_files: true
+  send_admin_commands: true
+  set_config: true
+  get_resources: false
+  get_log: true
+  admin_commands:
+  - shutdown
+  - reset
+  - unlock
+  - lock
+commands: {}
+is_template: false
+config_defaults:
+  host: 146.139.45.9
+  port: 2000
+actions:
+  start_auto_analysis_on_container:
+    name: start_auto_analysis_on_container
+    description: Start's the ICP's auto analysis process using the specified method
+      name
+    args:
+      method_name:
+        name: method_name
+        description: The name of the method to use for the analysis
+        argument_type: str
+        required: true
+        default: null
+      container:
+        name: container
+        description: The sample container to use
+        argument_type: Any
+        required: true
+        default: null
+      dataset_name:
+        name: dataset_name
+        description: The name of the dataset to store results to
+        argument_type: str
+        required: true
+        default: null
+      export_template_name:
+        name: export_template_name
+        description: The name of the export template file to use for auto-export
+        argument_type: str
+        required: true
+        default: null
+      wavelength_realign:
+        name: wavelength_realign
+        description: When to auto realign the wavelength. 0 for never, 1 for the start
+          of analysis, 2 for the start of each method.
+        argument_type: int
+        required: true
+        default: null
+      precalibrate:
+        name: precalibrate
+        description: Whether to precalibrate the instrument before starting the analysis
+        argument_type: bool
+        required: false
+        default: false
+      use_active_method:
+        name: use_active_method
+        description: Whether to use the active method, or load the method specified
+          by 'method_name' (ignored if 'precalibrate' is False)
+        argument_type: bool
+        required: false
+        default: false
+      wait_for_completion:
+        name: wait_for_completion
+        description: Whether to wait for the analysis to complete before returning
+        argument_type: bool
+        required: false
+        default: true
+    locations: {}
+    files: {}
+    results: {}
+    blocking: false
+    asynchronous: true
+  copy2storage:
+    name: copy2storage
+    description: Copy results for the current container to storage
+    args:
+      name:
+        name: name
+        description: The name of central data storage to copy results to
+        argument_type: str
+        required: true
+        default: null
+    locations: {}
+    files: {}
+    results: {}
+    blocking: false
+    asynchronous: true
+  Hg_realign:
+    name: Hg_realign
+    description: Realign the mercury bulb
+    args: {}
+    locations: {}
+    files: {}
+    results: {}
+    blocking: false
+    asynchronous: true
+  Plasma_on:
+    name: Plasma_on
+    description: Safely enable the ICP's plasma
+    args: {}
+    locations: {}
+    files: {}
+    results: {}
+    blocking: false
+    asynchronous: true
+  Plasma_off:
+    name: Plasma_off
+    description: Safely disable the ICP's plasma
+    args: {}
+    locations: {}
+    files: {}
+    results: {}
+    blocking: false
+    asynchronous: true
+config:
+  status_update_interval: 2.0
+  state_update_interval: 2.0
+  event_client_config: null
+  resource_server_url: null
+  host: 146.139.45.9
+  port: 2000
+  protocol: http
+  dll_path: C:/Program Files (x86)/PerkinElmer/Syngistix-ICP/SyngistixRemoteControl
+  server_ip: 146.139.45.9
+  client_ip: 146.139.45.9
+  file_path: C:/Users/Public/PerkinElmer Syngistix/ICP/Data/Reports
+config_schema:
+  $defs:
+    EventClientConfig:
+      description: Configuration for an Event Client.
+      properties:
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: The name of the event client.
+          title: Event Client Name
+        event_server_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: The URL of the event server.
+          title: Event Server URL
+        log_level:
+          default: 20
+          description: The log level of the event client.
+          title: Event Client Log Level
+          type: integer
+        source:
+          $ref: '#/$defs/OwnershipInfo'
+          description: Information about the source of the event client.
+          title: Source
+        log_dir:
+          anyOf:
+          - type: string
+          - format: path
+            type: string
+          description: The directory to store logs in.
+          title: Log Directory
+      title: EventClientConfig
+      type: object
+    OwnershipInfo:
+      description: Information about the ownership of a MADSci object.
+      properties:
+        user_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: The ID of the user who owns the object.
+          title: User ID
+        experiment_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: The ID of the experiment that owns the object.
+          title: Experiment ID
+        campaign_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: The ID of the campaign that owns the object.
+          title: Campaign ID
+        project_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: The ID of the project that owns the object.
+          title: Project ID
+        node_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: The ID of the node that owns the object.
+          title: Node ID
+        workcell_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: The ID of the workcell that owns the object.
+          title: Workcell ID
+        lab_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: The ID of the lab that owns the object.
+          title: Lab ID
+        step_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: The ID of the step that owns the object.
+          title: Step ID
+        workflow_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: The ID of the workflow that owns the object.
+          title: Workflow ID
+      title: OwnershipInfo
+      type: object
+  additionalProperties: true
+  description: Configuration for a Syngistix ICP Node
+  properties:
+    status_update_interval:
+      anyOf:
+      - type: number
+      - type: 'null'
+      default: 2.0
+      description: The interval in seconds at which the node should update its status.
+      title: Status Update Interval
+    state_update_interval:
+      anyOf:
+      - type: number
+      - type: 'null'
+      default: 2.0
+      description: The interval in seconds at which the node should update its state.
+      title: State Update Interval
+    event_client_config:
+      anyOf:
+      - $ref: '#/$defs/EventClientConfig'
+      - type: 'null'
+      default: null
+      description: The configuration for a MADSci event client.
+      title: Event Client Configuration
+    resource_server_url:
+      anyOf:
+      - format: uri
+        minLength: 1
+        type: string
+      - type: 'null'
+      default: null
+      description: The URL of the resource server for this node to use.
+      title: Resource Client URL
+    host:
+      default: 127.0.0.1
+      description: The host of the REST API.
+      title: Host
+      type: string
+    port:
+      default: 8000
+      description: The port of the REST API.
+      title: Port
+      type: integer
+    protocol:
+      default: http
+      description: The protocol of the REST API, either 'http' or 'https'.
+      title: Protocol
+      type: string
+    dll_path:
+      default: C:/Program Files (x86)/PerkinElmer/Syngistix-ICP/SyngistixRemoteControl
+      title: Dll Path
+      type: string
+    server_ip:
+      default: 146.139.45.9
+      title: Server Ip
+      type: string
+    client_ip:
+      default: 146.139.45.9
+      title: Client Ip
+      type: string
+    file_path:
+      default: C:/Users/Public/PerkinElmer Syngistix/ICP/Data/Reports
+      title: File Path
+      type: string
+  title: ICPConfig
+  type: object
