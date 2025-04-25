@@ -1,0 +1,14 @@
+name: AARL200 Event Manager
+manager_id: 01JSPSRD2588YHH60S0AZ42C4A
+description: An event manager for the AARL200 autonomous laboratory
+manager_type: event_manager
+url: http://controlroom1.cse.anl.gov:8001
+host: controlroom1.cse.anl.gov
+port: 8001
+db_url: mongodb://localhost:27017
+event_client_config:
+  name: null
+  event_server_url: null
+  log_level: 20
+  source: {}
+  log_dir: ~/.madsci/logs

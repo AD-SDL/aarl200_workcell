@@ -2,11 +2,11 @@ mqtt:
   enabled: false
 
 ffmpeg:
-  global_args: 
+  global_args:
     - -an
 
 detect:
-  enabled: False
+  enabled: false
 
 go2rtc:
   streams:
@@ -19,12 +19,10 @@ go2rtc:
       - rtsp://146.139.45.24:7447/rCYtwqfLHrpGGOyJ
     # aarlcam3:
     #   - ffmpeg:aarlcam3_stream#video=h264#rotate=180
-    
     aarlcam5_stream:
       - rtsp://146.139.45.24:7447/exuuI69ZTwxqlr7M#timeout=30
     # aarlcam5:
     #   - ffmpeg:aarlcam5_stream
-    
     aarlcam6_stream:
       - rtsp://146.139.45.24:7447/zICS9E9o9BTxRIdv#timeout=30
     # aarlcam6:
@@ -127,7 +125,7 @@ cameras:
       inputs:
         - path: rtsp://localhost:8554/aarlcam12_stream
           roles: []
-version: 0.14
+version: 0.15-1
 camera_groups:
   Birdseye:
     order: 1

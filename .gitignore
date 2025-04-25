@@ -164,10 +164,15 @@ cython_debug/
 *.code-workspace
 
 # Data Directory
-.wei
+.wei/
+.madsci/
 
 # Ruff
 .ruff_cache
 
 # Outputs
 experiment_output.jpg
+
+
+frigate/config/*
+!frigate/config/config.yaml

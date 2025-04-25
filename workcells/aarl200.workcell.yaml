@@ -27,7 +27,7 @@ modules:
     model: Vention Machine Motion2 - Rack & Pinion v2 w/ Gearbox
     interface: wei_rest_node
     config:
-      rest_node_address: "http://146.139.45.25:2000"
+      rest_node_address: "http://controlroom1.cse.anl.gov:2000"
   - name: icp
     active: False
     model: icp

@@ -1,0 +1,8 @@
+name: AARL200 Data Manager
+description: A data manager for AARL200
+manager_type: data_manager
+url: http://controlroom1.cse.anl.gov:8003
+host: controlroom1.cse.anl.gov
+port: 8003
+db_url: mongodb://localhost:27017
+event_client_config: null

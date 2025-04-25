@@ -1,0 +1,9 @@
+name: AARL200 Experiment Manager
+description: An experiment manager for AARL200
+manager_type: experiment_manager
+url: http://controlroom1.cse.anl.gov:8002
+host: controlroom1.cse.anl.gov
+port: 8002
+db_url: mongodb://localhost:27017
+event_client_config: null
+lab_manager_url: http://controlroom1.cse.anl.gov:8000

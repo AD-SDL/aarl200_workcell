@@ -1,5 +1,5 @@
 services:
-  frigate:
+  aarl200_frigate:
     container_name: aarl200_frigate
     restart: unless-stopped
     image: ghcr.io/blakeblackshear/frigate:stable
