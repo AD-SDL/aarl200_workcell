@@ -21,6 +21,7 @@ config:
   mongo_url: null
   get_action_result_retries: 3
 nodes:
+  icp_aarl200: http://146.139.45.9:2000
   ur_aarl200: http://controlroom1.cse.anl.gov:3011
   vention_rail_aarl200: http://controlroom1.cse.anl.gov:3022
 locations:
@@ -35,6 +36,13 @@ locations:
   location_id: 01JSPPYZTTTSPNQEEB1M6Z3WFP
   description: Supply slot 1 on the supply table
   lookup:
+    ur_aarl200:
+    - 0.3412017226219177
+    - -0.5645298522761841
+    - 1.5129197279559534
+    - -0.8693133753589173
+    - 0.3352632522583008
+    - -0.08214217821230108
     vention_rail_aarl200: 175
   resource_definition:
     resource_name: supply_slot_1
@@ -85,11 +93,87 @@ locations:
     default_child_template: null
     default_child_quantity: null
   resource_id: 01JSQ0NS4BEVD58D8FPTQ7K65B
+- location_name: supply_slot_4
+  location_id: 01JSZ5RDZRKAKWH77N3XNW46KZ
+  description: Supply slot 4 on the supply table
+  lookup:
+    ur_aarl200:
+    - 0.8551712036132812
+    - -0.48236723363909917
+    - 0.9596799055682581
+    - -0.41376789033923345
+    - 0.8539888858795166
+    - -0.04866201082338506
+    vention_rail_aarl200: 150
+  resource_definition:
+    resource_name: supply_slot_4
+    resource_name_prefix: null
+    resource_type: ''
+    base_type: slot
+    resource_description: null
+    owner: {}
+    custom_attributes: null
+    capacity: 1
+    default_children: null
+    default_child_template: null
+    default_child_quantity: null
+  resource_id: 01JSZ5RE5TYHTJWTS3R57CATBE
+- location_name: supply_slot_5
+  location_id: 01JSZ5RDZRS8CAJTB9398XV8K2
+  description: Supply slot 5 on the supply table
+  lookup:
+    ur_aarl200:
+    - 1.072803020477295
+    - -0.6423653525165101
+    - 1.2969368139850062
+    - -0.6086169642261048
+    - 1.0778557062149048
+    - -0.04507905641664678
+    vention_rail_aarl200: 150
+  resource_definition:
+    resource_name: supply_slot_5
+    resource_name_prefix: null
+    resource_type: ''
+    base_type: slot
+    resource_description: null
+    owner: {}
+    custom_attributes: null
+    capacity: 1
+    default_children: null
+    default_child_template: null
+    default_child_quantity: null
+  resource_id: 01JSZ5RE651DXF06KQBMV63Y68
 - location_name: trash
   location_id: 01JSQ0NRXWZJQK47E7MPSZK10K
   description: Trash can for tube racks
   lookup:
     vention_rail_aarl200: 900
+  resource_definition: null
+  resource_id: null
+- location_name: arm_safe_up
+  location_id: 01JSQ9S58CNMX3WBANBQQ8Q19J
+  description: A neutral pose for the UR arm puts it above the rail
+  lookup:
+    ur_aarl200:
+    - 0.00044058868661522865
+    - -2.810916086236471
+    - 1.744305435811178
+    - 1.0652529436298828
+    - 1.5159751176834106
+    - -0.011863533650533498
+  resource_definition: null
+  resource_id: null
+- location_name: supply_station_safe
+  location_id: 01JSQAQCH0MAQBQPWYPFKTSCJP
+  description: A neutral pose for the UR arm above the supply station
+  lookup:
+    ur_aarl200:
+    - 0.019657766446471214
+    - -1.8048960171141566
+    - 2.3868096510516565
+    - -0.4845213455012818
+    - 0.031074078753590584
+    - -0.06278688112367803
   resource_definition: null
   resource_id: null
 workcell_directory: /home/madsci/.madsci/workcells/AARL200 Workcell
