@@ -20,6 +20,7 @@ capabilities:
   admin_commands:
   - lock
   - reset
+  - safety_stop
   - shutdown
   - unlock
 commands: {}
@@ -40,7 +41,7 @@ actions:
     asynchronous: true
   stop:
     name: stop
-    description: Move the robot to a joint position
+    description: Stop the Rail
     args: {}
     locations: {}
     files: {}
@@ -53,13 +54,13 @@ actions:
     args:
       speed:
         name: speed
-        description: Acceleration
+        description: Speed
         argument_type: int
         required: false
         default: null
       acceleration:
         name: acceleration
-        description: Velocity
+        description: Acceleration
         argument_type: int
         required: false
         default: null
@@ -86,13 +87,13 @@ actions:
         default: null
       speed:
         name: speed
-        description: Acceleration
+        description: Speed
         argument_type: int
         required: false
         default: null
       acceleration:
         name: acceleration
-        description: Velocity
+        description: Acceleration
         argument_type: int
         required: false
         default: null
@@ -110,6 +111,9 @@ config:
   port: 3022
   protocol: http
   rail_ip: 192.168.7.2
+  speed: 10.0
+  acceleration: 5.0
+  rail_span: 1000.0
 config_schema:
   $defs:
     EventClientConfig:
@@ -264,9 +268,20 @@ config_schema:
       title: Protocol
       type: string
     rail_ip:
+      default: 192.168.7.2
       title: Rail Ip
       type: string
-  required:
-  - rail_ip
+    speed:
+      default: 10
+      title: Speed
+      type: number
+    acceleration:
+      default: 5
+      title: Acceleration
+      type: number
+    rail_span:
+      default: 1000
+      title: Rail Span
+      type: number
   title: VentionRailNodeConfig
   type: object
