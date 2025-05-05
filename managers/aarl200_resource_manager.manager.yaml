@@ -5,6 +5,8 @@ url: http://controlroom1.cse.anl.gov:8004
 host: controlroom1.cse.anl.gov
 port: 8004
 db_url: postgresql://aarl200:aarl200@localhost:5432/resources
+event_client_config:
+  event_server_url: http://controlroom1.cse.anl.gov:8001
 custom_types:
   tip_box:
     base_type: grid

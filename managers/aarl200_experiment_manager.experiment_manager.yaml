@@ -5,5 +5,6 @@ url: http://controlroom1.cse.anl.gov:8002
 host: controlroom1.cse.anl.gov
 port: 8002
 db_url: mongodb://localhost:27017
-event_client_config: null
+event_client_config:
+  event_server_url: http://controlroom1.cse.anl.gov:8001
 lab_manager_url: http://controlroom1.cse.anl.gov:8000

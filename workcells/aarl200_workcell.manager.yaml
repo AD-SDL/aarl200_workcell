@@ -9,7 +9,12 @@ config:
   redis_host: localhost
   redis_port: 6379
   redis_password: null
-  event_client_config: null
+  event_client_config:
+    name: null
+    event_server_url: http://controlroom1.cse.anl.gov:8001
+    log_level: 20
+    source: {}
+    log_dir: ~/.madsci/logs
   scheduler_update_interval: 2.0
   node_update_interval: 1.0
   auto_start: true
@@ -22,7 +27,9 @@ config:
   get_action_result_retries: 3
 nodes:
   bk_aarl200: http://CSI0365887.cse.anl.gov:2000
+  bk_barcode_reader: http://CSI0365887.cse.anl.gov:2001
   icp_aarl200: http://146.139.45.9:2000
+  pal_barcode_reader: http://controlroom2.cse.anl.gov:2001
   ur_aarl200: http://controlroom1.cse.anl.gov:3011
   vention_rail_aarl200: http://controlroom1.cse.anl.gov:3022
 locations:
@@ -48,7 +55,7 @@ locations:
   resource_definition:
     resource_name: supply_slot_1
     resource_name_prefix: null
-    resource_type: ''
+    resource_class: ''
     base_type: slot
     resource_description: null
     owner: {}
@@ -57,6 +64,7 @@ locations:
     default_children: null
     default_child_template: null
     default_child_quantity: null
+    resource_type: ''
   resource_id: 01JSQ0NS3F1PW8FBXC1ZZXHF22
 - location_name: supply_slot_2
   location_id: 01JSPPYZTTNV0BVY7V2CM4ZS4D
@@ -66,7 +74,7 @@ locations:
   resource_definition:
     resource_name: supply_slot_2
     resource_name_prefix: null
-    resource_type: ''
+    resource_class: ''
     base_type: slot
     resource_description: null
     owner: {}
@@ -75,6 +83,7 @@ locations:
     default_children: null
     default_child_template: null
     default_child_quantity: null
+    resource_type: ''
   resource_id: 01JSQ0NS46HNG1DAC9K3XSQJS3
 - location_name: supply_slot_3
   location_id: 01JSPPYZTT8QJ1K172B6MPNT03
@@ -84,7 +93,7 @@ locations:
   resource_definition:
     resource_name: supply_slot_3
     resource_name_prefix: null
-    resource_type: ''
+    resource_class: ''
     base_type: slot
     resource_description: null
     owner: {}
@@ -93,6 +102,7 @@ locations:
     default_children: null
     default_child_template: null
     default_child_quantity: null
+    resource_type: ''
   resource_id: 01JSQ0NS4BEVD58D8FPTQ7K65B
 - location_name: supply_slot_4
   location_id: 01JSZ5RDZRKAKWH77N3XNW46KZ
@@ -109,7 +119,7 @@ locations:
   resource_definition:
     resource_name: supply_slot_4
     resource_name_prefix: null
-    resource_type: ''
+    resource_class: ''
     base_type: slot
     resource_description: null
     owner: {}
@@ -118,6 +128,7 @@ locations:
     default_children: null
     default_child_template: null
     default_child_quantity: null
+    resource_type: ''
   resource_id: 01JSZ5RE5TYHTJWTS3R57CATBE
 - location_name: supply_slot_5
   location_id: 01JSZ5RDZRS8CAJTB9398XV8K2
@@ -134,7 +145,7 @@ locations:
   resource_definition:
     resource_name: supply_slot_5
     resource_name_prefix: null
-    resource_type: ''
+    resource_class: ''
     base_type: slot
     resource_description: null
     owner: {}
@@ -143,6 +154,7 @@ locations:
     default_children: null
     default_child_template: null
     default_child_quantity: null
+    resource_type: ''
   resource_id: 01JSZ5RE651DXF06KQBMV63Y68
 - location_name: trash
   location_id: 01JSQ0NRXWZJQK47E7MPSZK10K
